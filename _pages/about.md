@@ -1,25 +1,72 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About Me"
+excerpt: "About Me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+I am currently a **Postdoctoral Research Fellow** at the [Department of Land Surveying and Geo-Informatics (LSGI)](https://www.polyu.edu.hk/lsgi/), **The Hong Kong Polytechnic University (PolyU)**.
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+My research focuses on **Geodesy and Surveying Engineering**, with a particular interest in measurement data processing theory and hydro/polar remote sensing. I have extensive experience in handling multi-source geodetic data (GNSS, InSAR, Satellite Altimetry, Satellite Gravity) to solve complex geophysical problems.
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+Prior to my current role, I received my Ph.D. degree from **Tongji University** and visited the **University of Stuttgart** as a joint Ph.D. student. I also have industrial experience as a Senior GNSS Algorithm Engineer.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+You can find my full publication list on [Google Scholar](https://scholar.google.com/citations?user=PS_CX0AAAAAJ) and [ResearchGate](https://www.researchgate.net/profile/Kunpu-Ji-2).
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+---
 
+### 🔬 Research Interests
 
+My research sits at the intersection of **theoretical data processing** and **geophysical applications**:
+
+**1. Measurement Data Processing Theory**
+* **Time Series Analysis:** Singular Spectrum Analysis (SSA), PCA, Fourier Analysis, and Wavelet Analysis for spatiotemporal filtering.
+* **Inverse Theory:** Regularized inversion algorithms for ill-posed models (applied to both quantitative remote sensing and geodetic inversion).
+* **Statistical Estimation:** Variance Component Estimation (VCE) for multi-source data fusion.
+
+**2. Hydro/Polar Remote Sensing & Analysis**
+* **Terrestrial Water Storage:** Inversion of storage changes in typical regions and driver analysis.
+* **Cryosphere Science:** Mountain glacier mass balance inversion and sea-level rise attribution.
+* **Multi-source Fusion:** Joint inversion using GNSS, InSAR, Satellite Altimetry, and Satellite Gravity (GRACE/GRACE-FO).
+
+---
+
+### 🎓 Education
+
+* **Ph.D. in Geodesy and Surveying Engineering** (Sep. 2021 - May 2025)
+    * *Tongji University*, Shanghai, China
+    * Supervisor: Prof. Yunzhong Shen
+* **Joint Ph.D. Student** (Mar. 2024 - Mar. 2025)
+    * *University of Stuttgart*, Stuttgart, Germany
+    * Host Supervisor: Prof. Nico Sneeuw
+* **M.Sc. in Geodesy and Surveying Engineering** (Sep. 2017 - Jun. 2020)
+    * *Tongji University*, Shanghai, China
+    * Supervisor: Prof. Yunzhong Shen
+* **B.Eng. in Surveying Engineering** (Sep. 2013 - Jul. 2017)
+    * *Nanjing Tech University*, Nanjing, China
+
+---
+
+### 💼 Work Experience
+
+* **Postdoctoral Research Fellow** (Sep. 2025 - Present)
+    * *The Hong Kong Polytechnic University (PolyU)*, Hong Kong
+* **Research Assistant** (Jun. 2025 - Aug. 2025)
+    * *Tongji University*, Shanghai, China
+* **Senior GNSS Algorithm Engineer** (Jul. 2020 - Jul. 2021)
+    * *Qianxun Spatial Intelligence Inc.*, Shanghai, China
+
+---
+
+### 🏆 Honors & Awards
+
+* **2025**: Excellent Doctoral Dissertation of Tongji University (Top 2 in the major)
+* **2025**: Outstanding Graduate of Tongji University
+* **2024**: China Scholarship Council (CSC) Scholarship for Joint Ph.D. Training
+* **2023**: National Scholarship for Doctoral Students (Ministry of Education of China)
+* **2023**: Outstanding Student of Tongji University (2022-2023)
+* **2020**: Excellent Master's Dissertation of Tongji University (Top 2 in the major)
+* **2018**: Second Prize, The 15th "Huawei Cup" China Postgraduate Mathematical Contest in Modeling
