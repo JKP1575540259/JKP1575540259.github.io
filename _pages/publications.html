@@ -6,77 +6,140 @@ author_profile: true
 ---
 
 <style>
+  /* --- 全局默认样式 (桌面端) --- */
   .pub-item {
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 25px; /* 减小间距 */
     border-bottom: 1px solid #f2f3f3;
     padding-bottom: 20px;
+    align-items: flex-start; /* 顶部对齐 */
   }
+
   .pub-image {
-    flex: 0 0 150px; /* 左侧图片宽度 */
-    margin-right: 20px;
+    flex: 0 0 160px; /* 桌面端图片宽度 */
+    margin-right: 25px;
   }
+
   .pub-image img {
     width: 100%;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* 阴影淡一点更高级 */
     object-fit: cover;
     border: 1px solid #eee;
+    transition: transform 0.2s; /* 添加悬停动画效果 */
   }
+
+  /* 鼠标悬停图片轻微放大 */
+  .pub-image img:hover {
+    transform: scale(1.02);
+  }
+
   .pub-content {
     flex: 1;
+    min-width: 0; /* 防止内容撑开容器 */
   }
+
   .pub-title {
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.15em;
+    font-weight: 700;
     margin-top: 0;
     margin-bottom: 6px;
-    line-height: 1.3;
+    line-height: 1.35;
+    color: #24292e;
   }
+
   .pub-title a {
     text-decoration: none;
-    color: #2b2b2b;
+    color: inherit;
   }
+
   .pub-title a:hover {
-    color: #007bff; /* 鼠标悬停颜色 */
+    color: #0366d6; /* GitHub 蓝 */
+    text-decoration: underline;
   }
+
   .pub-meta {
-    font-size: 0.9em;
-    color: #444;
-    margin-bottom: 8px;
-    line-height: 1.6;
+    font-size: 0.95em;
+    color: #586069; /* 次级灰 */
+    margin-bottom: 10px;
+    line-height: 1.5;
   }
-  /* 期刊排名的样式 */
+
+  /* 期刊排名标签样式优化 */
   .journal-rank {
-    color: #d9534f; /* 红色高亮 */
+    display: inline-block; /* 避免断行断得难看 */
+    color: #d73a49; /* 更纯正的警告红 */
     font-size: 0.85em;
-    font-weight: normal;
-    background-color: #f9f2f4;
-    padding: 2px 4px;
-    border-radius: 3px;
-    margin-left: 5px;
+    font-weight: 500;
+    background-color: #ffeef0;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(215, 58, 73, 0.2);
+    margin-left: 0px; /* 手机端可能换行，桌面端保持间距 */
+    margin-top: 4px;
   }
+
+  /* 按钮区域 */
+  .pub-links {
+    margin-top: 8px;
+  }
+
   .pub-links a {
     display: inline-block;
-    margin-right: 12px;
+    margin-right: 10px;
+    margin-bottom: 5px; /* 防止手机端折行太挤 */
     font-size: 0.8em;
-    color: #007bff;
+    color: #0366d6;
     text-decoration: none;
-    border: 1px solid #007bff;
-    padding: 2px 8px;
-    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background-color: #fafbfc;
     transition: all 0.2s;
+    font-weight: 600;
   }
+
   .pub-links a:hover {
-    background-color: #007bff;
+    background-color: #0366d6;
     color: #fff;
+    border-color: #0366d6;
   }
+
+  /* --- 📱 手机端深度优化 (关键修改) --- */
   @media (max-width: 768px) {
-    .pub-item { flex-direction: column; }
-    .pub-image { width: 120px; margin-bottom: 10px; }
+    /* 1. 保持左右排列，不换行，像朋友圈/推特那样 */
+    .pub-item {
+      align-items: flex-start; 
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* 2. 图片变小，做成精致的左侧缩略图 */
+    .pub-image {
+      flex: 0 0 90px; /* 固定宽度 90px */
+      margin-right: 15px; /* 间距缩小 */
+    }
+
+    /* 3. 标题字体调小，避免占满屏幕 */
+    .pub-title {
+      font-size: 1.05em; 
+      line-height: 1.3;
+    }
+
+    /* 4. 元数据文字调小 */
+    .pub-meta {
+      font-size: 0.85em;
+      line-height: 1.4;
+    }
+
+    /* 5. 期刊标签让它换行显示，避免挤在一起 */
+    .journal-rank {
+      display: block;
+      width: fit-content;
+      margin-top: 5px;
+    }
   }
 </style>
-
 
 <h2>2025</h2>
 
