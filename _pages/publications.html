@@ -1,148 +1,33 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Publications</title>
-  <style>
-    :root{
-      --bg:#f7f8fb; --card:#ffffff; --accent:#0b63d6; --muted:#6b7280;
-      --radius:12px; --maxwidth:900px;
-    }
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#111; margin:0; padding:32px; display:flex; justify-content:center;}
-    .wrap{width:100%; max-width:var(--maxwidth);}
-    header{display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;}
-    h1{margin:0; font-size:1.6rem;}
-    .controls{display:flex; gap:8px; align-items:center;}
-    input[type="search"]{padding:8px 10px; border-radius:8px; border:1px solid #e6e9ef; background:#fff; min-width:220px;}
-    select{padding:8px; border-radius:8px; border:1px solid #e6e9ef; background:#fff;}
-    .year-group{margin:20px 0;}
-    .year-head{display:flex; align-items:center; gap:12px; margin-bottom:10px;}
-    .year-head h2{margin:0; font-size:1.1rem; color:var(--accent);}
-    .pub-list{display:flex; flex-direction:column; gap:12px;}
-    .pub{background:var(--card); padding:14px; border-radius:var(--radius); box-shadow:0 1px 2px rgba(16,24,40,0.04); display:flex; flex-direction:column; gap:6px;}
-    .title{font-weight:600;}
-    .meta{color:var(--muted); font-size:0.95rem;}
-    .actions{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;}
-    .btn{padding:6px 10px; border-radius:8px; text-decoration:none; border:1px solid transparent; font-size:0.9rem;}
-    .btn.pdf{background:#0b63d6; color:#fff;}
-    .btn.doi{background:#eef6ff; color:var(--accent); border-color:#d7e9ff;}
-    .badge{display:inline-block; padding:2px 8px; border-radius:999px; background:#f1f5f9; color:#334155; font-size:0.8rem;}
-    footer{margin-top:30px; color:var(--muted); font-size:0.9rem;}
-    @media (max-width:600px){ .controls{flex-direction:column; align-items:flex-start;} input[type="search"]{width:100%}}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <h1>Publications</h1>
-      <div class="controls">
-        <input id="search" type="search" placeholder="Search title, author, venue..." aria-label="search publications">
-        <select id="filterYear" aria-label="filter by year">
-          <option value="">All years</option>
-        </select>
-      </div>
-    </header>
+---
+layout: archive
+title: "Publications"
+permalink: /publications/
+author_profile: true
+---
 
-    <main id="content">
-      <!-- JS will render publications here -->
-    </main>
+{% if site.author.googlescholar %}
+  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+{% endif %}
 
-    <footer>
-      If you want BibTeX → HTML conversion, paste your BibTeX here and I can help convert.
-    </footer>
-  </div>
+{% include base_path %}
 
-  <script>
-    // ========== 数据区域：按此格式添加/修改条目 ==========
-    // 每条 pub 包含：year, authors, title, venue, links: {pdf, doi}
-    const publications = [
-      {
-        year: 2025,
-        authors: "K. Ji, A. Researcher",
-        title: "Extended SSA for optimal time-domain extraction",
-        venue: "IEEE Trans. Geosci. Remote Sens.",
-        links: { pdf: "#", doi: "https://doi.org/10.xxxx/xxxx" }
-      },
-      {
-        year: 2024,
-        authors: "K. Ji, L. Wang",
-        title: "Minimum weighted norm methods for unevenly spaced time series",
-        venue: "Mechanical Systems and Signal Processing",
-        links: { pdf: "#", doi: "" }
-      },
-      {
-        year: 2023,
-        authors: "K. Ji, S. Shen",
-        title: "Covariance estimation with missing data",
-        venue: "Computers & Geosciences",
-        links: { pdf: "#", doi: "https://doi.org/10.yyyy/yyyy" }
-      }
-      // add more entries...
-    ];
-
-    // ========== 渲染逻辑（不必改） ==========
-    const content = document.getElementById('content');
-    const filterYear = document.getElementById('filterYear');
-    const searchBox = document.getElementById('search');
-
-    // 收集所有年份并填充下拉
-    const years = [...new Set(publications.map(p=>p.year))].sort((a,b)=>b-a);
-    years.forEach(y => {
-      const opt = document.createElement('option'); opt.value = y; opt.textContent = y;
-      filterYear.appendChild(opt);
-    });
-
-    function render() {
-      const q = searchBox.value.trim().toLowerCase();
-      const yFilter = filterYear.value;
-      // 分组：按年份降序
-      const grouped = {};
-      publications.forEach(p=>{
-        if (yFilter && String(p.year)!==yFilter) return;
-        const text = (p.title + ' ' + p.authors + ' ' + p.venue).toLowerCase();
-        if (q && !text.includes(q)) return;
-        (grouped[p.year] = grouped[p.year] || []).push(p);
-      });
-
-      // 清空并写入
-      content.innerHTML = '';
-      const sortedYears = Object.keys(grouped).map(Number).sort((a,b)=>b-a);
-      if (sortedYears.length === 0) {
-        content.innerHTML = '<p style="color:var(--muted)">No publications found.</p>';
-        return;
-      }
-      sortedYears.forEach(y=>{
-        const group = document.createElement('section');
-        group.className = 'year-group';
-        group.innerHTML = `<div class="year-head"><h2>${y}</h2><span class="badge">${grouped[y].length} item(s)</span></div>`;
-        const list = document.createElement('div'); list.className = 'pub-list';
-        grouped[y].forEach(p=>{
-          const item = document.createElement('article'); item.className = 'pub';
-          item.innerHTML = `
-            <div class="title">${escapeHtml(p.title)}</div>
-            <div class="meta">${escapeHtml(p.authors)}. <em>${escapeHtml(p.venue)}</em>.</div>
-            <div class="actions">
-              ${p.links && p.links.pdf ? `<a class="btn pdf" href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
-              ${p.links && p.links.doi ? `<a class="btn doi" href="${p.links.doi}" target="_blank" rel="noopener">DOI</a>` : ''}
-            </div>
-          `;
-          list.appendChild(item);
-        });
-        group.appendChild(list);
-        content.appendChild(group);
-      });
-    }
-
-    // small helper to avoid XSS when filling innerHTML with content
-    function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-
-    // listeners
-    searchBox.addEventListener('input', render);
-    filterYear.addEventListener('change', render);
-
-    // initial render
-    render();
-  </script>
-</body>
-</html>
+<!-- New style rendering if publication categories are defined -->
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h2>{{ category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
