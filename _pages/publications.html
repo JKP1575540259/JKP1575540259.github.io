@@ -6,45 +6,44 @@ author_profile: true
 ---
 
 <style>
-  /* --- 全局默认样式 (桌面端) --- */
+  /* --- 全局基础样式 (桌面端) --- */
   .pub-item {
     display: flex;
-    margin-bottom: 25px; /* 减小间距 */
-    border-bottom: 1px solid #f2f3f3;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f0f0f0;
     padding-bottom: 20px;
-    align-items: flex-start; /* 顶部对齐 */
+    align-items: flex-start;
   }
 
+  /* 左侧图片容器 */
   .pub-image {
-    flex: 0 0 160px; /* 桌面端图片宽度 */
-    margin-right: 25px;
+    flex: 0 0 160px; /* 桌面端宽度 */
+    margin-right: 22px;
+    overflow: hidden; /* 防止图片溢出 */
   }
 
   .pub-image img {
     width: 100%;
     border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* 阴影淡一点更高级 */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     object-fit: cover;
     border: 1px solid #eee;
-    transition: transform 0.2s; /* 添加悬停动画效果 */
+    display: block; /* 消除图片底部空隙 */
   }
 
-  /* 鼠标悬停图片轻微放大 */
-  .pub-image img:hover {
-    transform: scale(1.02);
-  }
-
+  /* 右侧内容容器 */
   .pub-content {
     flex: 1;
-    min-width: 0; /* 防止内容撑开容器 */
+    min-width: 0; /* 关键：防止Flex子项撑破容器 */
   }
 
+  /* 标题样式 */
   .pub-title {
-    font-size: 1.15em;
+    font-size: 18px; /* 使用 px 而不是 em，防止微信计算偏差 */
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 6px;
-    line-height: 1.35;
+    line-height: 1.4;
     color: #24292e;
   }
 
@@ -52,91 +51,97 @@ author_profile: true
     text-decoration: none;
     color: inherit;
   }
-
   .pub-title a:hover {
-    color: #0366d6; /* GitHub 蓝 */
+    color: #0366d6;
     text-decoration: underline;
   }
 
+  /* 作者和会议信息 */
   .pub-meta {
-    font-size: 0.95em;
-    color: #586069; /* 次级灰 */
-    margin-bottom: 10px;
-    line-height: 1.5;
+    font-size: 14px;
+    color: #586069;
+    margin-bottom: 8px;
+    line-height: 1.6;
   }
 
-  /* 期刊排名标签样式优化 */
+  /* 红色期刊标签 */
   .journal-rank {
-    display: inline-block; /* 避免断行断得难看 */
-    color: #d73a49; /* 更纯正的警告红 */
-    font-size: 0.85em;
+    display: inline-block;
+    color: #d73a49;
+    font-size: 12px;
     font-weight: 500;
     background-color: #ffeef0;
-    padding: 1px 6px;
+    padding: 1px 5px;
     border-radius: 4px;
     border: 1px solid rgba(215, 58, 73, 0.2);
-    margin-left: 0px; /* 手机端可能换行，桌面端保持间距 */
-    margin-top: 4px;
+    vertical-align: middle;
+    margin-left: 4px;
   }
 
   /* 按钮区域 */
   .pub-links {
-    margin-top: 8px;
+    margin-top: 6px;
   }
-
   .pub-links a {
     display: inline-block;
-    margin-right: 10px;
-    margin-bottom: 5px; /* 防止手机端折行太挤 */
-    font-size: 0.8em;
+    margin-right: 8px;
+    font-size: 12px;
     color: #0366d6;
     text-decoration: none;
     border: 1px solid #e1e4e8;
-    padding: 3px 10px;
-    border-radius: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
     background-color: #fafbfc;
-    transition: all 0.2s;
-    font-weight: 600;
   }
 
-  .pub-links a:hover {
-    background-color: #0366d6;
-    color: #fff;
-    border-color: #0366d6;
-  }
-
-  /* --- 📱 手机端深度优化 (关键修改) --- */
+  /* --- 📱 手机端/微信端 强制优化 --- */
   @media (max-width: 768px) {
-    /* 1. 保持左右排列，不换行，像朋友圈/推特那样 */
+    /* 1. 强制禁止微信字体自动放大 */
+    body {
+      -webkit-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
+    }
+
+    /* 2. 保持左右布局！不要上下排列，那样太占地方 */
     .pub-item {
-      align-items: flex-start; 
+      flex-direction: row; 
+      align-items: flex-start;
+      margin-bottom: 15px;
       padding-bottom: 15px;
-      margin-bottom: 20px;
     }
 
-    /* 2. 图片变小，做成精致的左侧缩略图 */
+    /* 3. 图片强制缩小，做成左侧小缩略图 */
     .pub-image {
-      flex: 0 0 90px; /* 固定宽度 90px */
-      margin-right: 15px; /* 间距缩小 */
+      flex: 0 0 85px; /* 手机上固定 85px 宽 */
+      margin-right: 12px;
     }
 
-    /* 3. 标题字体调小，避免占满屏幕 */
+    /* 4. 标题字体锁死大小，防止爆炸 */
     .pub-title {
-      font-size: 1.05em; 
-      line-height: 1.3;
+      font-size: 15px !important; /* 强制 15px */
+      line-height: 1.35;
+      margin-bottom: 4px;
+      
+      /* 超过3行显示省略号(可选，防止标题太长) */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    /* 4. 元数据文字调小 */
+    /* 5. 信息字体缩小 */
     .pub-meta {
-      font-size: 0.85em;
+      font-size: 12px !important; /* 强制 12px */
       line-height: 1.4;
+      margin-bottom: 6px;
     }
 
-    /* 5. 期刊标签让它换行显示，避免挤在一起 */
+    /* 6. 期刊标签换行显示，更加整洁 */
     .journal-rank {
-      display: block;
+      display: block; /* 独占一行 */
       width: fit-content;
-      margin-top: 5px;
+      margin-top: 4px;
+      margin-left: 0;
     }
   }
 </style>
@@ -145,7 +150,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_IEEE_TGRS_MWF.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_IEEE_TGRS_MWF.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -164,7 +169,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_GPS_Sol.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_GPS_Sol.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -183,7 +188,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_Surveys.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_Surveys.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -202,7 +207,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_GJI.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_GJI.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -221,7 +226,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_IEEE_TGRS_Recursive.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_IEEE_TGRS_Recursive.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -240,7 +245,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2025_AGG.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2025_AGG.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -262,7 +267,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2024_IEEE_TGRS_EWF.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2024_IEEE_TGRS_EWF.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -281,7 +286,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2024_Wuhan.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2024_Wuhan.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -302,7 +307,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2023_J_Geodesy.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2023_J_Geodesy.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -321,7 +326,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2023_IEEE_TGRS_EPCA.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2023_IEEE_TGRS_EPCA.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -343,7 +348,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2022_IEEE_TGRS_Adaptive.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2022_IEEE_TGRS_Adaptive.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -365,7 +370,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2020_RemoteSensing.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2020_RemoteSensing.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -383,7 +388,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2020_CHXB.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2020_CHXB.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
@@ -401,7 +406,7 @@ author_profile: true
 
 <div class="pub-item">
   <div class="pub-image">
-    <img src="/images/pubs/2020_WHU.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+    <img src="/images/pubs/2020_WHU.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper'" alt="Thumbnail">
   </div>
   <div class="pub-content">
     <div class="pub-title">
