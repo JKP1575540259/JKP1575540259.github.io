@@ -5,29 +5,351 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+<style>
+  .pub-item {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #f2f3f3;
+    padding-bottom: 20px;
+  }
+  .pub-image {
+    flex: 0 0 150px; /* 左侧图片宽度 */
+    margin-right: 20px;
+  }
+  .pub-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    object-fit: cover;
+    border: 1px solid #eee;
+  }
+  .pub-content {
+    flex: 1;
+  }
+  .pub-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .pub-title a {
+    text-decoration: none;
+    color: #2b2b2b;
+  }
+  .pub-title a:hover {
+    color: #007bff; /* 鼠标悬停颜色 */
+  }
+  .pub-meta {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  /* 期刊排名的样式 */
+  .journal-rank {
+    color: #d9534f; /* 红色高亮 */
+    font-size: 0.85em;
+    font-weight: normal;
+    background-color: #f9f2f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+    margin-left: 5px;
+  }
+  .pub-links a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 0.8em;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .pub-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  @media (max-width: 768px) {
+    .pub-item { flex-direction: column; }
+    .pub-image { width: 120px; margin-bottom: 10px; }
+  }
+</style>
 
-{% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<h2>2025</h2>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_IEEE_TGRS.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Minimum Norm Least Squares Wavelet Filtering for Processing Incomplete Geodetic Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, F. Wang.<br>
+      <i>IEEE Transactions on Geoscience and Remote Sensing</i>, 63: 1-19.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a> <a href="#">Code</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_GPS_Sol.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Least Squares Fourier Filter for Processing Incomplete and Heterogeneous GNSS Position Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, N. Sneeuw, et al.<br>
+      <i>GPS Solutions</i>, 29, 130.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_Surveys.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Filtering Unevenly Spaced Geophysical Time Series as an Ill-Posed Problem</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, L. Zhang, F. Wang.<br>
+      <i>Surveys in Geophysics</i>. (Accepted)
+      <span class="journal-rank">大地测量/地球物理一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_GJI.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">An Efficient Improved Singular Spectrum Analysis for Processing GNSS Position Time Series with Missing Data</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, F. Wang, et al.<br>
+      <i>Geophysical Journal International</i>, 240(1), 189-200.
+      <span class="journal-rank">大地测量/地球物理领域二区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_IEEE_TGRS_2.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">A Recursive Regularized Solution to Geophysical Linear Ill-Posed Inverse Problems</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, N. Sneeuw, et al.<br>
+      <i>IEEE Transactions on Geoscience and Remote Sensing</i>, 63: 1-14.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2025_Acta.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Some New Insights into Efficient ISSA for Processing Incomplete Geodetic Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, F. Wang.<br>
+      <i>Acta Geodynamica et Geomaterialia</i>, 22, 4(220): 531-544.
+      <span class="journal-rank">Doi: 10.13168/AGG.2025.0038</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+
+<h2>2024</h2>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2024_IEEE_TGRS.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Extended Multiresolution Analysis for Filtering Incomplete Heterogeneous Geophysical Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, F. Wang, Q. Chen, L. Zhang.<br>
+      <i>IEEE Transactions on Geoscience and Remote Sensing</i>, 62: 1-13.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2024_Wuhan.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">GRACE时变重力场模型的自适应正则化滤波方法</a>
+    </div>
+    <div class="pub-meta">
+      <strong>嵇昆浦</strong>, 沈云中, 陈秋杰.<br>
+      <i>武汉大学学报(信息科学版)</i>, 49(11):2101-2112.
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+
+<h2>2023</h2>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2023_J_Geodesy.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Extended Singular Spectrum Analysis for Processing Incomplete Heterogeneous Geodetic Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, Q. Chen, F. Wang.<br>
+      <i>Journal of Geodesy</i>, 97(8): 74.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2023_IEEE_TGRS.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Extended Principal Component Analysis for Spatiotemporal Filtering of Incomplete Heterogeneous GNSS Position Time Series</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, Q. Chen, T. Feng.<br>
+      <i>IEEE Transactions on Geoscience and Remote Sensing</i>, 61: 1-19.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+
+<h2>2022</h2>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2022_IEEE_TGRS.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">An Adaptive Regularized Solution to Inverse Ill-posed Models</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, Q. Chen, B. Li, W. Wang.<br>
+      <i>IEEE Transactions on Geoscience and Remote Sensing</i>, 60: 1-15.
+      <span class="journal-rank">测绘遥感领域一区 Top 期刊</span>
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+
+<h2>2020</h2>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2020_RemoteSensing.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">Signal Extraction from GNSS Position Time Series Using Weighted Wavelet Analysis</a>
+    </div>
+    <div class="pub-meta">
+      <strong>K. Ji</strong>, Y. Shen, F. Wang.<br>
+      <i>Remote Sensing</i>, 12.
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2020_CHXB.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">含缺值GNSS基准站坐标序列的非插值小波分析与信号提取</a>
+    </div>
+    <div class="pub-meta">
+      <strong>嵇昆浦</strong>, 沈云中.<br>
+      <i>测绘学报</i>, 49(05).
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-image">
+    <img src="/images/pubs/2020_WHU.jpg" onerror="this.src='https://placehold.co/300x200?text=Paper+Image'" alt="Paper Thumbnail">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">
+      <a href="#">TSVD正则化解法的单位权方差无偏估计</a>
+    </div>
+    <div class="pub-meta">
+      <strong>嵇昆浦</strong>, 沈云中.<br>
+      <i>武汉大学学报(信息科学版)</i>, 45(04).
+    </div>
+    <div class="pub-links">
+      <a href="#">PDF</a>
+    </div>
+  </div>
+</div>
