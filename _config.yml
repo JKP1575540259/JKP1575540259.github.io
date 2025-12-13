@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Your Name / Site Title"
+title                    : "Kunpu Ji - PolyU"
 title_separator          : "-"
 name                     : &name "Kunpu Ji"
-description              : &description "Your Name's academic portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Personal Website of Dr. Kunpu Ji"   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://JKP1575540259.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -27,8 +27,8 @@ author:
   name             : "Kunpu Ji"
   pronouns         : # example: "she/her"  
   bio              : "Postdoctoral Research Fellow"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "Hong Kong"
+  employer         : "The Hong Kong Polytechnic University"
   uri              : # URL
   email            : "kunpu.ji@polyu.edu.hk" 
 
@@ -42,7 +42,7 @@ author:
   semantic         : # URL
   ssrn             : # URL
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
+  researchgate     : "https://www.researchgate.net/profile/Kunpu-Ji-2"
   scopus           : # URL
   zotero           : # URL
 
